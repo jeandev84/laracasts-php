@@ -1,0 +1,18 @@
+# Дать все права папке "laracasts-php"
+jeandev@jeandev-Lenovo-G580:/var/www$ sudo chmod -R 777 laracasts-php
+
+jeandev@jeandev-Lenovo-G580:/var/www$ touch doc.txt
+touch: невозможно выполнить touch для 'doc.txt': Отказано в доступе
+
+jeandev@jeandev-Lenovo-G580:/var/www$ cd laracasts-php
+jeandev@jeandev-Lenovo-G580:/var/www/laracasts-php$ touch doc.txt
+
+jeandev@jeandev-Lenovo-G580:/var/www/laracasts-php$ ls -la
+итого 8
+drwxrwxrwx 2 root    root    4096 окт 10 17:03 .
+drwxr-xr-x 4 root    root    4096 окт 10 16:55 ..
+-rw-rw-r-- 1 jeandev jeandev    0 окт 10 17:03 doc.txt
+jeandev@jeandev-Lenovo-G580:/var/www/laracasts-php$ sudo gedit doc.txt
+
+# Доступ к phpmyadmin #
+http://localhost/phpmyadmin/
