@@ -16,3 +16,12 @@ jeandev@jeandev-Lenovo-G580:/var/www/laracasts-php$ sudo gedit doc.txt
 
 # Доступ к phpmyadmin #
 http://localhost/phpmyadmin/
+
+# Configuration
+git config --global user.email "you@example.com"
+git config --global user.name "Ваше Имя"
+
+#---------------------------------------------------
+
+$ php -h ( Help php )
+$ php -S localhost:8888
