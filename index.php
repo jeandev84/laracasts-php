@@ -1,15 +1,8 @@
 <?php
 
-/*
-$greeting = "Hello, World";
-require 'index.view.php';
-*/
+/* title, due, assigned_to , completed */
+$task = [];
 
-$names = [
-    'John',
-    'Jeff',
-    'Mary'
-];
 
 require 'index.view.php';
 
