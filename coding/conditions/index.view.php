@@ -21,12 +21,13 @@
         </li>
         <li>
             <strong>Status: </strong>
-            <?php if($task['completed']) : ?>
-                <span class="icon">&#9989;</span>
-            <?php else: ?>
-                <span class="icon">Incomplete</span>
-            <?php endif; ?>
-
+            <?php
+            if($task['completed']) {
+                echo 'Finished';
+            }else{
+                echo 'Incomplete';
+            }
+            ?>
         </li>
     </ul>
 </header>

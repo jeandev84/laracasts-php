@@ -2,7 +2,7 @@
 
 /*
 $greeting = "Hello, World";
-require 'index.view.php';
+require 'index.view.coding';
 */
 
 $names = [
