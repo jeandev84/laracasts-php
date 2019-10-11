@@ -1,22 +1,20 @@
 <?php
 
-# DEBUG
 
-/**
- * @param $data
- */
-function dd($data)
+if(!function_exists('dd'))
 {
-    echo '<pre>';
-    die(var_dump($data));
-    echo '</pre>';
+    /**
+     * @param $data
+     */
+    function dd($data)
+    {
+        echo '<pre>';
+        die(var_dump($data));
+        echo '</pre>';
+    }
 }
 
 
-/**
- * @param $arr
- * @param bool $die
- */
 function debug($arr, $die = false)
 {
     echo '<pre>';
@@ -26,36 +24,8 @@ function debug($arr, $die = false)
 }
 
 
-# DATABASE
-
-/**
- * @return PDO
- */
-function connectToDb()
-{
-    // Connection to Database
-    try {
-
-        return new PDO('mysql:host=127.0.0.1;dbname=laracasts_php', 'root', '');
-
-    } catch (PDOException $e) {
-
-        die($e->getMessage());
-    }
-}
 
 
-/**
- * @param PDO $pdo
- * @return array
- */
-function fetchAllTasks(PDO $pdo)
-{
-    // Execute Query
-    $statement = $pdo->prepare('select * from `todos`');
-    $statement->execute();
-    return $statement->fetchAll(PDO::FETCH_CLASS, 'Task');
-}
 
 
 
