@@ -1,0 +1,81 @@
+jeandev@jeandev-Lenovo-G580:/var/www/laracasts-php$ mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 41
+Server version: 10.3.18-MariaDB-1:10.3.18+maria~bionic mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
++--------------------+
+3 rows in set (0.013 sec)
+
+MariaDB [(none)]> create database laracasts_php
+    -> ;
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| laracasts_php      |
+| mysql              |
+| performance_schema |
++--------------------+
+4 rows in set (0.001 sec)
+
+MariaDB [(none)]> use laracasts_php;
+Database changed
+MariaDB [laracasts_php]> show tables;
+Empty set (0.000 sec)
+
+MariaDB [laracasts_php]> create table todos (description text, completed boolean);
+Query OK, 0 rows affected (0.021 sec)
+
+MariaDB [laracasts_php]> show tables;
++-------------------------+
+| Tables_in_laracasts_php |
++-------------------------+
+| todos                   |
++-------------------------+
+1 row in set (0.001 sec)
+
+MariaDB [laracasts_php]> decribe todos;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'decribe todos' at line 1
+MariaDB [laracasts_php]> describe todos;
++-------------+------------+------+-----+---------+-------+
+| Field       | Type       | Null | Key | Default | Extra |
++-------------+------------+------+-----+---------+-------+
+| description | text       | YES  |     | NULL    |       |
+| completed   | tinyint(1) | YES  |     | NULL    |       |
++-------------+------------+------+-----+---------+-------+
+2 rows in set (0.006 sec)
+
+MariaDB [laracasts_php]> drop table todos;
+Query OK, 0 rows affected (0.011 sec)
+
+MariaDB [laracasts_php]> show tables;
+Empty set (0.001 sec)
+
+MariaDB [laracasts_php]> create table todos (description text NOT NULL, completed boolean NOT NULL);
+Query OK, 0 rows affected (0.015 sec)
+
+MariaDB [laracasts_php]> describe todos;
++-------------+------------+------+-----+---------+-------+
+| Field       | Type       | Null | Key | Default | Extra |
++-------------+------------+------+-----+---------+-------+
+| description | text       | NO   |     | NULL    |       |
+| completed   | tinyint(1) | NO   |     | NULL    |       |
++-------------+------------+------+-----+---------+-------+
+2 rows in set (0.002 sec)
+
+MariaDB [laracasts_php]>
