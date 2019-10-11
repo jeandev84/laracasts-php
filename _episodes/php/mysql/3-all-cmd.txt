@@ -1,0 +1,833 @@
+jeandev@jeandev-Lenovo-G580:/var/www/laracasts-php$ mysql
+ERROR 1045 (28000): Access denied for user 'jeandev'@'localhost' (using password: NO)
+jeandev@jeandev-Lenovo-G580:/var/www/laracasts-php$ mysql -u root -p
+Enter password:
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+jeandev@jeandev-Lenovo-G580:/var/www/laracasts-php$ mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 39
+Server version: 10.3.18-MariaDB-1:10.3.18+maria~bionic mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> q
+    -> \c
+MariaDB [(none)]> Ctrl-C -- exit!
+Aborted
+jeandev@jeandev-Lenovo-G580:/var/www/laracasts-php$ brew search mysql
+
+Команда «brew» не найдена, но может быть установлена с помощью:
+
+sudo apt install linuxbrew-wrapper
+
+jeandev@jeandev-Lenovo-G580:/var/www/laracasts-php$ sudo apt install linuxbrew-wrapper
+[sudo] пароль для jeandev:
+Чтение списков пакетов… Готово
+Построение дерева зависимостей
+Чтение информации о состоянии… Готово
+Будут установлены следующие дополнительные пакеты:
+  curl fonts-lato libpython-stdlib libpython2-stdlib libpython2.7-minimal libpython2.7-stdlib libruby2.5 python python-minimal
+  python-pkg-resources python-setuptools python2 python2-minimal python2.7 python2.7-minimal rake ruby ruby-did-you-mean ruby-minitest
+  ruby-net-telnet ruby-power-assert ruby-test-unit ruby-xmlrpc ruby2.5 rubygems-integration
+Предлагаемые пакеты:
+  python-doc python-tk python-setuptools-doc python2-doc python2.7-doc binfmt-support ri ruby-dev bundler
+Следующие НОВЫЕ пакеты будут установлены:
+  curl fonts-lato libpython-stdlib libpython2-stdlib libpython2.7-minimal libpython2.7-stdlib libruby2.5 linuxbrew-wrapper python
+  python-minimal python-pkg-resources python-setuptools python2 python2-minimal python2.7 python2.7-minimal rake ruby ruby-did-you-mean
+  ruby-minitest ruby-net-telnet ruby-power-assert ruby-test-unit ruby-xmlrpc ruby2.5 rubygems-integration
+Обновлено 0 пакетов, установлено 26 новых пакетов, для удаления отмечено 0 пакетов, и 126 пакетов не обновлено.
+Необходимо скачать 10,6 MB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 47,0 MB.
+Хотите продолжить? [Д/н] y
+Пол:1 http://ru.archive.ubuntu.com/ubuntu disco/main amd64 fonts-lato all 2.0-2 [2 698 kB]
+Пол:2 http://security.ubuntu.com/ubuntu disco-security/main amd64 libpython2.7-minimal amd64 2.7.16-2ubuntu0.2 [336 kB]
+Пол:3 http://security.ubuntu.com/ubuntu disco-security/main amd64 python2.7-minimal amd64 2.7.16-2ubuntu0.2 [1 309 kB]
+Пол:4 http://security.ubuntu.com/ubuntu disco-security/main amd64 libpython2.7-stdlib amd64 2.7.16-2ubuntu0.2 [1 913 kB]
+Пол:5 http://ru.archive.ubuntu.com/ubuntu disco/main amd64 python2-minimal amd64 2.7.16-1 [27,8 kB]
+Пол:6 http://ru.archive.ubuntu.com/ubuntu disco/main amd64 python-minimal amd64 2.7.16-1 [5 996 B]
+Пол:7 http://ru.archive.ubuntu.com/ubuntu disco/main amd64 libpython2-stdlib amd64 2.7.16-1 [7 432 B]
+Пол:8 http://ru.archive.ubuntu.com/ubuntu disco/main amd64 libpython-stdlib amd64 2.7.16-1 [5 828 B]
+Пол:9 http://ru.archive.ubuntu.com/ubuntu disco/main amd64 python2 amd64 2.7.16-1 [26,5 kB]
+Пол:10 http://ru.archive.ubuntu.com/ubuntu disco/main amd64 python amd64 2.7.16-1 [7 836 B]
+Пол:11 http://ru.archive.ubuntu.com/ubuntu disco-updates/main amd64 curl amd64 7.64.0-2ubuntu1.2 [166 kB]
+Пол:12 http://ru.archive.ubuntu.com/ubuntu disco/main amd64 rubygems-integration all 1.11 [4 994 B]
+Пол:13 http://ru.archive.ubuntu.com/ubuntu disco/main amd64 ruby2.5 amd64 2.5.5-1ubuntu1 [48,7 kB]
+Пол:14 http://ru.archive.ubuntu.com/ubuntu disco/main amd64 ruby amd64 1:2.5.1 [5 712 B]
+Пол:15 http://ru.archive.ubuntu.com/ubuntu disco/main amd64 rake all 12.3.1-3 [44,9 kB]
+Пол:16 http://ru.archive.ubuntu.com/ubuntu disco/main amd64 ruby-did-you-mean all 1.2.1-1 [9 828 B]
+Пол:17 http://ru.archive.ubuntu.com/ubuntu disco/main amd64 ruby-minitest all 5.11.3-1 [39,4 kB]
+Пол:18 http://ru.archive.ubuntu.com/ubuntu disco/main amd64 ruby-net-telnet all 0.1.1-2 [12,6 kB]
+Пол:19 http://ru.archive.ubuntu.com/ubuntu disco/main amd64 ruby-power-assert all 1.1.1-1 [11,0 kB]
+Пол:20 http://ru.archive.ubuntu.com/ubuntu disco/main amd64 ruby-test-unit all 3.2.8-1 [61,4 kB]
+Пол:21 http://ru.archive.ubuntu.com/ubuntu disco/main amd64 ruby-xmlrpc all 0.3.0-2 [23,8 kB]
+Пол:22 http://ru.archive.ubuntu.com/ubuntu disco/main amd64 libruby2.5 amd64 2.5.5-1ubuntu1 [3 081 kB]
+Пол:23 http://security.ubuntu.com/ubuntu disco-security/main amd64 python2.7 amd64 2.7.16-2ubuntu0.2 [244 kB]
+Пол:24 http://ru.archive.ubuntu.com/ubuntu disco/main amd64 python-pkg-resources all 40.8.0-1 [129 kB]
+Пол:25 http://ru.archive.ubuntu.com/ubuntu disco/main amd64 python-setuptools all 40.8.0-1 [329 kB]
+Пол:26 http://ru.archive.ubuntu.com/ubuntu disco/multiverse amd64 linuxbrew-wrapper all 20180923-1 [14,7 kB]
+Получено 10,6 MB за 18с (592 kB/s)
+debconf: не удалось инициализировать интерфейс: Dialog
+debconf: (Для интерфейса dialog требуется экран не менее 13 строк в высоту и 31 колонки в ширину.)
+debconf: будет использован интерфейс: Readline
+Выбор ранее не выбранного пакета fonts-lato.
+(Чтение базы данных … на данный момент установлено 181579 файлов и каталогов.)
+Подготовка к распаковке …/0-fonts-lato_2.0-2_all.deb …
+
+Распаковывается fonts-lato (2.0-2) …...........................................................................................]
+
+Выбор ранее не выбранного пакета libpython2.7-minimal:amd64....................................................................]
+Подготовка к распаковке …/1-libpython2.7-minimal_2.7.16-2ubuntu0.2_amd64.deb …
+
+Распаковывается libpython2.7-minimal:amd64 (2.7.16-2ubuntu0.2) …...............................................................]
+
+Выбор ранее не выбранного пакета python2.7-minimal.............................................................................]
+Подготовка к распаковке …/2-python2.7-minimal_2.7.16-2ubuntu0.2_amd64.deb …
+
+Распаковывается python2.7-minimal (2.7.16-2ubuntu0.2) …........................................................................]
+
+Выбор ранее не выбранного пакета python2-minimal...............................................................................]
+Подготовка к распаковке …/3-python2-minimal_2.7.16-1_amd64.deb …
+
+Распаковывается python2-minimal (2.7.16-1) …...................................................................................]
+
+Выбор ранее не выбранного пакета python-minimal................................................................................]
+Подготовка к распаковке …/4-python-minimal_2.7.16-1_amd64.deb …
+
+Распаковывается python-minimal (2.7.16-1) …....................................................................................]
+
+Выбор ранее не выбранного пакета libpython2.7-stdlib:amd64.....................................................................]
+Подготовка к распаковке …/5-libpython2.7-stdlib_2.7.16-2ubuntu0.2_amd64.deb …
+
+Распаковывается libpython2.7-stdlib:amd64 (2.7.16-2ubuntu0.2) …................................................................]
+
+Выбор ранее не выбранного пакета python2.7.....................................................................................]
+Подготовка к распаковке …/6-python2.7_2.7.16-2ubuntu0.2_amd64.deb …
+
+Распаковывается python2.7 (2.7.16-2ubuntu0.2) …................................................................................]
+
+Выбор ранее не выбранного пакета libpython2-stdlib:amd64.......................................................................]
+Подготовка к распаковке …/7-libpython2-stdlib_2.7.16-1_amd64.deb …
+
+Распаковывается libpython2-stdlib:amd64 (2.7.16-1) …...........................................................................]
+
+Выбор ранее не выбранного пакета libpython-stdlib:amd64........................................................................]
+Подготовка к распаковке …/8-libpython-stdlib_2.7.16-1_amd64.deb …
+
+Распаковывается libpython-stdlib:amd64 (2.7.16-1) …............................................................................]
+
+Настраивается пакет libpython2.7-minimal:amd64 (2.7.16-2ubuntu0.2) …...........................................................]
+
+Ход выполнения: [ 18%] [##################.....................................................................................]
+Настраивается пакет python2.7-minimal (2.7.16-2ubuntu0.2) …....................................................................]
+
+Linking and byte-compiling packages for runtime python2.7......................................................................]
+Настраивается пакет python2-minimal (2.7.16-1) …
+
+Ход выполнения: [ 22%] [######################.................................................................................]
+Выбор ранее не выбранного пакета python2.######................................................................................]
+(Чтение базы данных … на данный момент установлено 182358 файлов и каталогов.)
+Подготовка к распаковке …/python2_2.7.16-1_amd64.deb …
+
+Распаковывается python2 (2.7.16-1) …############...............................................................................]
+
+Настраивается пакет python-minimal (2.7.16-1) …##..............................................................................]
+
+Ход выполнения: [ 26%] [##########################.............................................................................]
+Выбор ранее не выбранного пакета python.###########............................................................................]
+(Чтение базы данных … на данный момент установлено 182387 файлов и каталогов.)
+Подготовка к распаковке …/00-python_2.7.16-1_amd64.deb …
+
+Распаковывается python (2.7.16-1) …#################...........................................................................]
+
+Выбор ранее не выбранного пакета curl.###############..........................................................................]
+Подготовка к распаковке …/01-curl_7.64.0-2ubuntu1.2_amd64.deb …
+
+Распаковывается curl (7.64.0-2ubuntu1.2) …############.........................................................................]
+
+Выбор ранее не выбранного пакета rubygems-integration.#........................................................................]
+Подготовка к распаковке …/02-rubygems-integration_1.11_all.deb …
+
+Распаковывается rubygems-integration (1.11) …###########.......................................................................]
+
+Выбор ранее не выбранного пакета ruby2.5.################......................................................................]
+Подготовка к распаковке …/03-ruby2.5_2.5.5-1ubuntu1_amd64.deb …
+
+Распаковывается ruby2.5 (2.5.5-1ubuntu1) …################.....................................................................]
+
+Выбор ранее не выбранного пакета ruby.#####################....................................................................]
+Подготовка к распаковке …/04-ruby_1%3a2.5.1_amd64.deb …
+
+Распаковывается ruby (1:2.5.1) …############################...................................................................]
+
+Выбор ранее не выбранного пакета rake.#######################..................................................................]
+Подготовка к распаковке …/05-rake_12.3.1-3_all.deb …
+
+Распаковывается rake (12.3.1-3) …#############################.................................................................]
+
+Выбор ранее не выбранного пакета ruby-did-you-mean.############................................................................]
+Подготовка к распаковке …/06-ruby-did-you-mean_1.2.1-1_all.deb …
+
+Распаковывается ruby-did-you-mean (1.2.1-1) …###################...............................................................]
+
+Выбор ранее не выбранного пакета ruby-minitest.##################..............................................................]
+Подготовка к распаковке …/07-ruby-minitest_5.11.3-1_all.deb …
+Распаковывается ruby-minitest (5.11.3-1) …
+
+Выбор ранее не выбранного пакета ruby-net-telnet.##################............................................................]
+Подготовка к распаковке …/08-ruby-net-telnet_0.1.1-2_all.deb …
+
+Распаковывается ruby-net-telnet (0.1.1-2) …#########################...........................................................]
+
+Выбор ранее не выбранного пакета ruby-power-assert.##################..........................................................]
+Подготовка к распаковке …/09-ruby-power-assert_1.1.1-1_all.deb …
+
+Распаковывается ruby-power-assert (1.1.1-1) …#########################.........................................................]
+
+Выбор ранее не выбранного пакета ruby-test-unit.#######################........................................................]
+Подготовка к распаковке …/10-ruby-test-unit_3.2.8-1_all.deb …
+
+Распаковывается ruby-test-unit (3.2.8-1) …##############################.......................................................]
+
+Выбор ранее не выбранного пакета ruby-xmlrpc.############################......................................................]
+Подготовка к распаковке …/11-ruby-xmlrpc_0.3.0-2_all.deb …
+
+Распаковывается ruby-xmlrpc (0.3.0-2) …###################################.....................................................]
+
+Выбор ранее не выбранного пакета libruby2.5:amd64.#########################....................................................]
+Подготовка к распаковке …/12-libruby2.5_2.5.5-1ubuntu1_amd64.deb …
+
+Распаковывается libruby2.5:amd64 (2.5.5-1ubuntu1) …########################....................................................]
+
+Выбор ранее не выбранного пакета python-pkg-resources.######################...................................................]
+Подготовка к распаковке …/13-python-pkg-resources_40.8.0-1_all.deb …
+
+Распаковывается python-pkg-resources (40.8.0-1) …############################..................................................]
+
+Выбор ранее не выбранного пакета python-setuptools.###########################.................................................]
+Подготовка к распаковке …/14-python-setuptools_40.8.0-1_all.deb …
+
+Распаковывается python-setuptools (40.8.0-1) …#################################................................................]
+
+Выбор ранее не выбранного пакета linuxbrew-wrapper.#############################...............................................]
+Подготовка к распаковке …/15-linuxbrew-wrapper_20180923-1_all.deb …
+
+Распаковывается linuxbrew-wrapper (20180923-1) …#################################..............................................]
+
+Настраивается пакет fonts-lato (2.0-2) …##########################################.............................................]
+
+Ход выполнения: [ 58%] [###########################################################............................................]
+Настраивается пакет ruby-power-assert (1.1.1-1) …###################################...........................................]
+
+Настраивается пакет rubygems-integration (1.11) …####################################..........................................]
+
+Ход выполнения: [ 62%] [###############################################################........................................]
+Настраивается пакет libpython2.7-stdlib:amd64 (2.7.16-2ubuntu0.2) …#####################.......................................]
+
+Ход выполнения: [ 64%] [#################################################################......................................]
+Настраивается пакет ruby-minitest (5.11.3-1) …############################################.....................................]
+
+Ход выполнения: [ 66%] [###################################################################....................................]
+Настраивается пакет ruby-test-unit (3.2.8-1) …##############################################...................................]
+
+Ход выполнения: [ 68%] [#####################################################################..................................]
+Настраивается пакет ruby-net-telnet (0.1.1-2) …###############################################.................................]
+
+Ход выполнения: [ 70%] [#######################################################################................................]
+Настраивается пакет curl (7.64.0-2ubuntu1.2) …##################################################...............................]
+
+Ход выполнения: [ 71%] [#########################################################################..............................]
+Настраивается пакет ruby-did-you-mean (1.2.1-1) …#################################################.............................]
+
+Ход выполнения: [ 73%] [###########################################################################............................]
+Настраивается пакет ruby-xmlrpc (0.3.0-2) …#########################################################...........................]
+
+Ход выполнения: [ 75%] [#############################################################################..........................]
+Настраивается пакет python2.7 (2.7.16-2ubuntu0.2) …###################################################.........................]
+
+Ход выполнения: [ 77%] [###############################################################################........................]
+Настраивается пакет libpython2-stdlib:amd64 (2.7.16-1) …################################################.......................]
+
+Ход выполнения: [ 79%] [#################################################################################......................]
+Настраивается пакет python2 (2.7.16-1) …##################################################################.....................]
+
+Настраивается пакет libpython-stdlib:amd64 (2.7.16-1) …#####################################################...................]
+
+Ход выполнения: [ 83%] [#####################################################################################..................]
+Настраивается пакет python (2.7.16-1) …#######################################################################.................]
+
+Ход выполнения: [ 85%] [#######################################################################################................]
+Настраивается пакет python-pkg-resources (40.8.0-1) …###########################################################...............]
+
+Ход выполнения: [ 87%] [#########################################################################################..............]
+Настраивается пакет python-setuptools (40.8.0-1) …################################################################.............]
+
+Ход выполнения: [ 89%] [###########################################################################################............]
+Настраивается пакет rake (12.3.1-3) …###############################################################################...........]
+
+Ход выполнения: [ 90%] [#############################################################################################..........]
+Настраивается пакет libruby2.5:amd64 (2.5.5-1ubuntu1) …###############################################################.........]
+
+Ход выполнения: [ 92%] [###############################################################################################........]
+Настраивается пакет ruby2.5 (2.5.5-1ubuntu1) …##########################################################################.......]
+
+Ход выполнения: [ 94%] [#################################################################################################......]
+Настраивается пакет ruby (1:2.5.1) …######################################################################################.....]
+
+Ход выполнения: [ 96%] [###################################################################################################....]
+Настраивается пакет linuxbrew-wrapper (20180923-1) …########################################################################...]
+
+Ход выполнения: [ 98%] [#####################################################################################################..]
+Обрабатываются триггеры для fontconfig (2.13.1-2ubuntu2) …####################################################################.]
+Обрабатываются триггеры для desktop-file-utils (0.23-4ubuntu1) …
+Обрабатываются триггеры для mime-support (3.60ubuntu1) …
+Обрабатываются триггеры для gnome-menus (3.32.0-1ubuntu1) …
+Обрабатываются триггеры для libc-bin (2.29-0ubuntu2) …
+Обрабатываются триггеры для man-db (2.8.5-2) …
+jeandev@jeandev-Lenovo-G580:/var/www/laracasts-php$ brew search mysql
+==> This script will install:
+/home/linuxbrew/.linuxbrew/bin/brew
+/home/linuxbrew/.linuxbrew/share/doc/homebrew
+/home/linuxbrew/.linuxbrew/share/man/man1/brew.1
+/home/linuxbrew/.linuxbrew/share/zsh/site-functions/_brew
+/home/linuxbrew/.linuxbrew/etc/bash_completion.d/brew
+/home/jeandev/.cache/Homebrew/
+/home/linuxbrew/.linuxbrew/Homebrew
+==> The following new directories will be created:
+/home/linuxbrew/.linuxbrew/bin
+/home/linuxbrew/.linuxbrew/etc
+/home/linuxbrew/.linuxbrew/include
+/home/linuxbrew/.linuxbrew/lib
+/home/linuxbrew/.linuxbrew/sbin
+/home/linuxbrew/.linuxbrew/share
+/home/linuxbrew/.linuxbrew/var
+/home/linuxbrew/.linuxbrew/opt
+/home/linuxbrew/.linuxbrew/share/zsh
+/home/linuxbrew/.linuxbrew/share/zsh/site-functions
+/home/linuxbrew/.linuxbrew/Cellar
+/home/linuxbrew/.linuxbrew/Caskroom
+/home/linuxbrew/.linuxbrew/Homebrew
+/home/linuxbrew/.linuxbrew/Frameworks
+
+Press RETURN to continue or any other key to abort
+==> /usr/bin/sudo /bin/mkdir -p /home/linuxbrew/.linuxbrew
+==> /usr/bin/sudo /bin/chown jeandev:jeandev /home/linuxbrew/.linuxbrew
+==> /usr/bin/sudo /bin/mkdir -p /home/linuxbrew/.linuxbrew/bin /home/linuxbrew/.linuxbrew/etc /home/linuxbrew/.linuxbrew/include /home/linuxbrew/.linuxbrew/lib /home/linuxbrew/.linuxbrew/sbin /home/linuxbrew/.linuxbrew/share /home/linuxbrew/.linuxbrew/var /home/linuxbrew/.linuxbrew/opt /home/linuxbrew/.linuxbrew/share/zsh /home/linuxbrew/.linuxbrew/share/zsh/site-functions /home/linuxbrew/.linuxbrew/Cellar /home/linuxbrew/.linuxbrew/Caskroom /home/linuxbrew/.linuxbrew/Homebrew /home/linuxbrew/.linuxbrew/Frameworks
+==> /usr/bin/sudo /bin/chmod g+rwx /home/linuxbrew/.linuxbrew/bin /home/linuxbrew/.linuxbrew/etc /home/linuxbrew/.linuxbrew/include /home/linuxbrew/.linuxbrew/lib /home/linuxbrew/.linuxbrew/sbin /home/linuxbrew/.linuxbrew/share /home/linuxbrew/.linuxbrew/var /home/linuxbrew/.linuxbrew/opt /home/linuxbrew/.linuxbrew/share/zsh /home/linuxbrew/.linuxbrew/share/zsh/site-functions /home/linuxbrew/.linuxbrew/Cellar /home/linuxbrew/.linuxbrew/Caskroom /home/linuxbrew/.linuxbrew/Homebrew /home/linuxbrew/.linuxbrew/Frameworks
+==> /usr/bin/sudo /bin/chmod 755 /home/linuxbrew/.linuxbrew/share/zsh /home/linuxbrew/.linuxbrew/share/zsh/site-functions
+==> /usr/bin/sudo /bin/chown jeandev /home/linuxbrew/.linuxbrew/bin /home/linuxbrew/.linuxbrew/etc /home/linuxbrew/.linuxbrew/include /home/linuxbrew/.linuxbrew/lib /home/linuxbrew/.linuxbrew/sbin /home/linuxbrew/.linuxbrew/share /home/linuxbrew/.linuxbrew/var /home/linuxbrew/.linuxbrew/opt /home/linuxbrew/.linuxbrew/share/zsh /home/linuxbrew/.linuxbrew/share/zsh/site-functions /home/linuxbrew/.linuxbrew/Cellar /home/linuxbrew/.linuxbrew/Caskroom /home/linuxbrew/.linuxbrew/Homebrew /home/linuxbrew/.linuxbrew/Frameworks
+==> /usr/bin/sudo /bin/chgrp jeandev /home/linuxbrew/.linuxbrew/bin /home/linuxbrew/.linuxbrew/etc /home/linuxbrew/.linuxbrew/include /home/linuxbrew/.linuxbrew/lib /home/linuxbrew/.linuxbrew/sbin /home/linuxbrew/.linuxbrew/share /home/linuxbrew/.linuxbrew/var /home/linuxbrew/.linuxbrew/opt /home/linuxbrew/.linuxbrew/share/zsh /home/linuxbrew/.linuxbrew/share/zsh/site-functions /home/linuxbrew/.linuxbrew/Cellar /home/linuxbrew/.linuxbrew/Caskroom /home/linuxbrew/.linuxbrew/Homebrew /home/linuxbrew/.linuxbrew/Frameworks
+==> /usr/bin/sudo /bin/mkdir -p /home/jeandev/.cache/Homebrew
+==> /usr/bin/sudo /bin/chmod g+rwx /home/jeandev/.cache/Homebrew
+==> /usr/bin/sudo /bin/chown jeandev /home/jeandev/.cache/Homebrew
+==> /usr/bin/sudo /bin/chgrp jeandev /home/jeandev/.cache/Homebrew
+==> Downloading and installing Linuxbrew...
+remote: Enumerating objects: 127970, done.
+remote: Total 127970 (delta 0), reused 0 (delta 0), pack-reused 127970
+Получение объектов: 100% (127970/127970), 29.72 MiB | 540.00 KiB/s, готово.
+Определение изменений: 100% (93663/93663), готово.
+Из https://github.com/Linuxbrew/brew
+ * [новая ветка]     master     -> origin/master
+ * [новая метка]     1.0.0      -> 1.0.0
+ * [новая метка]     1.0.1      -> 1.0.1
+ * [новая метка]     1.0.2      -> 1.0.2
+ * [новая метка]     1.0.3      -> 1.0.3
+ * [новая метка]     1.0.4      -> 1.0.4
+ * [новая метка]     1.0.5      -> 1.0.5
+ * [новая метка]     1.0.6      -> 1.0.6
+ * [новая метка]     1.0.7      -> 1.0.7
+ * [новая метка]     1.0.8      -> 1.0.8
+ * [новая метка]     1.0.9      -> 1.0.9
+ * [новая метка]     1.1.0      -> 1.1.0
+ * [новая метка]     1.1.0.1    -> 1.1.0.1
+ * [новая метка]     1.1.1      -> 1.1.1
+ * [новая метка]     1.1.10     -> 1.1.10
+ * [новая метка]     1.1.11     -> 1.1.11
+ * [новая метка]     1.1.12     -> 1.1.12
+ * [новая метка]     1.1.13     -> 1.1.13
+ * [новая метка]     1.1.2      -> 1.1.2
+ * [новая метка]     1.1.2.1    -> 1.1.2.1
+ * [новая метка]     1.1.3      -> 1.1.3
+ * [новая метка]     1.1.4      -> 1.1.4
+ * [новая метка]     1.1.5      -> 1.1.5
+ * [новая метка]     1.1.6      -> 1.1.6
+ * [новая метка]     1.1.7      -> 1.1.7
+ * [новая метка]     1.1.8      -> 1.1.8
+ * [новая метка]     1.1.9      -> 1.1.9
+ * [новая метка]     1.2.0      -> 1.2.0
+ * [новая метка]     1.2.1      -> 1.2.1
+ * [новая метка]     1.2.2      -> 1.2.2
+ * [новая метка]     1.2.3      -> 1.2.3
+ * [новая метка]     1.2.4      -> 1.2.4
+ * [новая метка]     1.2.5      -> 1.2.5
+ * [новая метка]     1.2.6      -> 1.2.6
+ * [новая метка]     1.2.7      -> 1.2.7
+ * [новая метка]     1.2.8      -> 1.2.8
+ * [новая метка]     1.3.0      -> 1.3.0
+ * [новая метка]     1.3.1      -> 1.3.1
+ * [новая метка]     1.3.2      -> 1.3.2
+ * [новая метка]     1.3.3      -> 1.3.3
+ * [новая метка]     1.3.4      -> 1.3.4
+ * [новая метка]     1.3.5      -> 1.3.5
+ * [новая метка]     1.3.6      -> 1.3.6
+ * [новая метка]     1.3.7      -> 1.3.7
+ * [новая метка]     1.3.8      -> 1.3.8
+ * [новая метка]     1.3.9      -> 1.3.9
+ * [новая метка]     1.4.0      -> 1.4.0
+ * [новая метка]     1.4.1      -> 1.4.1
+ * [новая метка]     1.4.2      -> 1.4.2
+ * [новая метка]     1.4.3      -> 1.4.3
+ * [новая метка]     1.5.0      -> 1.5.0
+ * [новая метка]     1.5.1      -> 1.5.1
+ * [новая метка]     1.5.10     -> 1.5.10
+ * [новая метка]     1.5.11     -> 1.5.11
+ * [новая метка]     1.5.12     -> 1.5.12
+ * [новая метка]     1.5.13     -> 1.5.13
+ * [новая метка]     1.5.14     -> 1.5.14
+ * [новая метка]     1.5.2      -> 1.5.2
+ * [новая метка]     1.5.3      -> 1.5.3
+ * [новая метка]     1.5.4      -> 1.5.4
+ * [новая метка]     1.5.5      -> 1.5.5
+ * [новая метка]     1.5.6      -> 1.5.6
+ * [новая метка]     1.5.7      -> 1.5.7
+ * [новая метка]     1.5.8      -> 1.5.8
+ * [новая метка]     1.5.9      -> 1.5.9
+ * [новая метка]     1.6.0      -> 1.6.0
+ * [новая метка]     1.6.1      -> 1.6.1
+ * [новая метка]     1.6.10     -> 1.6.10
+ * [новая метка]     1.6.11     -> 1.6.11
+ * [новая метка]     1.6.12     -> 1.6.12
+ * [новая метка]     1.6.13     -> 1.6.13
+ * [новая метка]     1.6.14     -> 1.6.14
+ * [новая метка]     1.6.15     -> 1.6.15
+ * [новая метка]     1.6.16     -> 1.6.16
+ * [новая метка]     1.6.17     -> 1.6.17
+ * [новая метка]     1.6.2      -> 1.6.2
+ * [новая метка]     1.6.3      -> 1.6.3
+ * [новая метка]     1.6.4      -> 1.6.4
+ * [новая метка]     1.6.5      -> 1.6.5
+ * [новая метка]     1.6.6      -> 1.6.6
+ * [новая метка]     1.6.7      -> 1.6.7
+ * [новая метка]     1.6.8      -> 1.6.8
+ * [новая метка]     1.6.9      -> 1.6.9
+ * [новая метка]     1.7.0      -> 1.7.0
+ * [новая метка]     1.7.1      -> 1.7.1
+ * [новая метка]     1.7.2      -> 1.7.2
+ * [новая метка]     1.7.3      -> 1.7.3
+ * [новая метка]     1.7.4      -> 1.7.4
+ * [новая метка]     1.7.5      -> 1.7.5
+ * [новая метка]     1.7.6      -> 1.7.6
+ * [новая метка]     1.7.7      -> 1.7.7
+ * [новая метка]     1.8.0      -> 1.8.0
+ * [новая метка]     1.8.1      -> 1.8.1
+ * [новая метка]     1.8.2      -> 1.8.2
+ * [новая метка]     1.8.3      -> 1.8.3
+ * [новая метка]     1.8.4      -> 1.8.4
+ * [новая метка]     1.8.5      -> 1.8.5
+ * [новая метка]     1.8.6      -> 1.8.6
+ * [новая метка]     1.9.0      -> 1.9.0
+ * [новая метка]     1.9.1      -> 1.9.1
+ * [новая метка]     1.9.2      -> 1.9.2
+ * [новая метка]     1.9.3      -> 1.9.3
+ * [новая метка]     1.9.4      -> 1.9.4
+HEAD сейчас на 93389fde6 README.md: Linuxbrew has been merged into Homebrew (#942)
+==> Migrating from Linuxbrew/brew to Homebrew/brew
+  Linuxbrew/brew has been merged into Homebrew/brew!
+  Linuxbrew/brew will no longer be updated.
+  Your git remote has been changed from
+     https://github.com/Linuxbrew/brew
+  to https://github.com/Homebrew/brew
+  See the blog post at https://brew.sh/2019/02/02/homebrew-2.0.0/
+==> Homebrew is run entirely by unpaid volunteers. Please consider donating:
+  https://github.com/Homebrew/brew#donations
+==> Tapping homebrew/core
+Cloning into '/home/linuxbrew/.linuxbrew/Homebrew/Library/Taps/homebrew/homebrew-core'...
+remote: Enumerating objects: 5133, done.
+remote: Counting objects: 100% (5133/5133), done.
+remote: Compressing objects: 100% (4932/4932), done.
+remote: Total 5133 (delta 49), reused 443 (delta 7), pack-reused 0
+Receiving objects: 100% (5133/5133), 4.30 MiB | 572.00 KiB/s, done.
+Resolving deltas: 100% (49/49), done.
+Tapped 3 commands and 4915 formulae (5,175 files, 13.4MB).
+Already up-to-date.
+==> Installation successful!
+
+==> Homebrew has enabled anonymous aggregate formulae and cask analytics.
+Read the analytics documentation (and how to opt-out) here:
+  https://docs.brew.sh/Analytics.html
+
+==> Homebrew is run entirely by unpaid volunteers. Please consider donating:
+  https://github.com/Homebrew/brew#donations
+==> Next steps:
+- Install the Linuxbrew dependencies if you have sudo access:
+  Debian, Ubuntu, etc.
+    sudo apt-get install build-essential
+  Fedora, Red Hat, CentOS, etc.
+    sudo yum groupinstall 'Development Tools'
+  See http://linuxbrew.sh/#dependencies for more information.
+- Add Linuxbrew to your ~/.profile by running
+    echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"' >>~/.profile
+    echo 'export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"' >>~/.profile
+    echo 'export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"' >>~/.profile
+- Add Linuxbrew to your PATH
+    PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+- We recommend that you install GCC by running:
+    brew install gcc
+- After modifying your shell profile, you may need to restart your session
+  (logout and then log back in) if the brew command isn't found.
+- Run `brew help` to get started
+- Further documentation:
+    https://docs.brew.sh
+Warning: /home/linuxbrew/.linuxbrew/bin is not in your PATH.
+/usr/bin/brew: 78: exec: /home/jeandev/.linuxbrew/bin/brew: not found
+jeandev@jeandev-Lenovo-G580:/var/www/laracasts-php$ brew install mysql
+==> Installing dependencies for mysql: patchelf, ncurses, openssl, cmake, openssl@1.1 and libedit
+==> Installing mysql dependency: patchelf
+==> Downloading https://linuxbrew.bintray.com/bottles/patchelf-0.10.x86_64_linux.bottle.tar.gz
+==> Downloading from https://akamai.bintray.com/98/988b224305ff3fecadf9bbf5fbe1b18061077be6c896935b2cef29298526f5b8?__gda__=exp=1570746591~hmac=
+######################################################################## 100.0%
+==> Pouring patchelf-0.10.x86_64_linux.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/patchelf/0.10: 8 files, 921.5KB
+==> Installing mysql dependency: ncurses
+==> Downloading https://linuxbrew.bintray.com/bottles/ncurses-6.1.x86_64_linux.bottle.tar.gz
+==> Downloading from https://akamai.bintray.com/5e/5eb929e69e3a2b71c2161551825fd16146efc164ab7dbea25d2a5b73b51cd1cb?__gda__=exp=1570746595~hmac=
+######################################################################## 100.0%
+==> Pouring ncurses-6.1.x86_64_linux.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/ncurses/6.1: 3,856 files, 15.4MB
+==> Installing mysql dependency: openssl
+==> Downloading https://linuxbrew.bintray.com/bottles/openssl-1.0.2t.x86_64_linux.bottle.tar.gz
+==> Downloading from https://akamai.bintray.com/d8/d8b7bbc6ecf538611b4f21c7c69e13f7b5a0d098a1f307762c4254b807f89339?__gda__=exp=1570746607~hmac=
+######################################################################## 100.0%
+==> Pouring openssl-1.0.2t.x86_64_linux.bottle.tar.gz
+==> Downloading https://curl.haxx.se/ca/cacert-2019-01-23.pem
+######################################################################## 100.0%
+==> Caveats
+A CA file has been bootstrapped using certificates from the SystemRoots
+keychain. To add additional certificates (e.g. the certificates added in
+the System keychain), place .pem files in
+  /home/linuxbrew/.linuxbrew/etc/openssl/certs
+
+and run
+  /home/linuxbrew/.linuxbrew/opt/openssl/bin/c_rehash
+==> Summary
+🍺  /home/linuxbrew/.linuxbrew/Cellar/openssl/1.0.2t: 1,804 files, 14.6MB
+==> Installing mysql dependency: cmake
+==> Downloading https://linuxbrew.bintray.com/bottles/cmake-3.15.4.x86_64_linux.bottle.tar.gz
+==> Downloading from https://akamai.bintray.com/fb/fbcd772374a67e228524bc32a647a0922916ef2a1baf09d3c7e688384a0f9b2d?__gda__=exp=1570746619~hmac=
+######################################################################## 100.0%
+==> Pouring cmake-3.15.4.x86_64_linux.bottle.tar.gz
+==> Caveats
+Emacs Lisp files have been installed to:
+  /home/linuxbrew/.linuxbrew/share/emacs/site-lisp/cmake
+==> Summary
+🍺  /home/linuxbrew/.linuxbrew/Cellar/cmake/3.15.4: 5,803 files, 58.2MB
+==> Installing mysql dependency: openssl@1.1
+==> Downloading https://linuxbrew.bintray.com/bottles/openssl@1.1-1.1.1d.x86_64_linux.bottle.tar.gz
+==> Downloading from https://akamai.bintray.com/56/569696aee50973f6d5db37e7917c214e8c72608fb841b3d727b3d213f555faa0?__gda__=exp=1570746653~hmac=
+######################################################################## 100.0%
+==> Pouring openssl@1.1-1.1.1d.x86_64_linux.bottle.tar.gz
+==> Downloading https://curl.haxx.se/ca/cacert-2017-01-18.pem
+######################################################################## 100.0%
+==> Caveats
+A CA file has been bootstrapped using certificates from the system
+keychain. To add additional certificates, place .pem files in
+  /home/linuxbrew/.linuxbrew/etc/openssl@1.1/certs
+
+and run
+  /home/linuxbrew/.linuxbrew/opt/openssl@1.1/bin/c_rehash
+
+openssl@1.1 is keg-only, which means it was not symlinked into /home/linuxbrew/.linuxbrew,
+because this is an alternate version of another formula.
+
+If you need to have openssl@1.1 first in your PATH run:
+  echo 'export PATH="/home/linuxbrew/.linuxbrew/opt/openssl@1.1/bin:$PATH"' >> ~/.bash_profile
+
+For compilers to find openssl@1.1 you may need to set:
+  export LDFLAGS="-L/home/linuxbrew/.linuxbrew/opt/openssl@1.1/lib"
+  export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/openssl@1.1/include"
+
+==> Summary
+🍺  /home/linuxbrew/.linuxbrew/Cellar/openssl@1.1/1.1.1d: 7,985 files, 21.2MB
+==> Installing mysql dependency: libedit
+==> Downloading https://linuxbrew.bintray.com/bottles/libedit-20190324-3.1.x86_64_linux.bottle.tar.gz
+==> Downloading from https://akamai.bintray.com/d1/d102921a365c86aed691593980cf8ad7359b1cc9df6902b1ce9a816dfffcdaaa?__gda__=exp=1570746670~hmac=
+######################################################################## 100.0%
+==> Pouring libedit-20190324-3.1.x86_64_linux.bottle.tar.gz
+🍺  /home/linuxbrew/.linuxbrew/Cellar/libedit/20190324-3.1: 55 files, 758.3KB
+==> Installing mysql
+==> Downloading https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-boost-8.0.17.tar.gz
+######################################################################## 100.0%
+==> cmake . -DCMAKE_C_FLAGS_RELEASE=-DNDEBUG -DCMAKE_CXX_FLAGS_RELEASE=-DNDEBUG -DCMAKE_INSTALL_PREFIX=/home/linuxbrew/.linuxbrew/Cellar/mysql/8
+Last 15 lines from /home/jeandev/.cache/Homebrew/Logs/mysql/01.cmake:
+
+CMake Error at /home/linuxbrew/.linuxbrew/Cellar/cmake/3.15.4/share/cmake/Modules/FindPackageHandleStandardArgs.cmake:137 (message):
+  Could NOT find PkgConfig (missing: PKG_CONFIG_EXECUTABLE)
+Call Stack (most recent call first):
+  /home/linuxbrew/.linuxbrew/Cellar/cmake/3.15.4/share/cmake/Modules/FindPackageHandleStandardArgs.cmake:378 (_FPHSA_FAILURE_MESSAGE)
+  /home/linuxbrew/.linuxbrew/Cellar/cmake/3.15.4/share/cmake/Modules/FindPkgConfig.cmake:41 (find_package_handle_standard_args)
+  cmake/pkg-config.cmake:36 (FIND_PACKAGE)
+  cmake/rpc.cmake:29 (MYSQL_CHECK_PKGCONFIG)
+  plugin/group_replication/libmysqlgcs/configure.cmake:57 (MYSQL_CHECK_RPC)
+  plugin/group_replication/libmysqlgcs/CMakeLists.txt:28 (INCLUDE)
+
+
+-- Configuring incomplete, errors occurred!
+See also "/tmp/mysql-20191011-11159-u0j6qz/mysql-8.0.17/CMakeFiles/CMakeOutput.log".
+See also "/tmp/mysql-20191011-11159-u0j6qz/mysql-8.0.17/CMakeFiles/CMakeError.log".
+
+READ THIS: https://docs.brew.sh/Troubleshooting
+
+These open issues may also help:
+mysql: Build a bottle for Linuxbrew https://github.com/Homebrew/linuxbrew-core/pull/15615
+Installing mysql@5.7 fails due to missing rpcgen dependency https://github.com/Homebrew/linuxbrew-core/issues/13192
+jeandev@jeandev-Lenovo-G580:/var/www/laracasts-php$ mysql -u root -password
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+jeandev@jeandev-Lenovo-G580:/var/www/laracasts-php$ mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 41
+Server version: 10.3.18-MariaDB-1:10.3.18+maria~bionic mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
++--------------------+
+3 rows in set (0.013 sec)
+
+MariaDB [(none)]> create database laracasts_php
+    -> ;
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| laracasts_php      |
+| mysql              |
+| performance_schema |
++--------------------+
+4 rows in set (0.001 sec)
+
+MariaDB [(none)]> use laracasts_php;
+Database changed
+MariaDB [laracasts_php]> show tables;
+Empty set (0.000 sec)
+
+MariaDB [laracasts_php]> create table todos (description text, completed boolean);
+Query OK, 0 rows affected (0.021 sec)
+
+MariaDB [laracasts_php]> show tables;
++-------------------------+
+| Tables_in_laracasts_php |
++-------------------------+
+| todos                   |
++-------------------------+
+1 row in set (0.001 sec)
+
+MariaDB [laracasts_php]> decribe todos;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'decribe todos' at line 1
+MariaDB [laracasts_php]> describe todos;
++-------------+------------+------+-----+---------+-------+
+| Field       | Type       | Null | Key | Default | Extra |
++-------------+------------+------+-----+---------+-------+
+| description | text       | YES  |     | NULL    |       |
+| completed   | tinyint(1) | YES  |     | NULL    |       |
++-------------+------------+------+-----+---------+-------+
+2 rows in set (0.006 sec)
+
+MariaDB [laracasts_php]> drop table todos;
+Query OK, 0 rows affected (0.011 sec)
+
+MariaDB [laracasts_php]> show tables;
+Empty set (0.001 sec)
+
+MariaDB [laracasts_php]> create table todos (description text NOT NULL, completed boolean NOT NULL);
+Query OK, 0 rows affected (0.015 sec)
+
+MariaDB [laracasts_php]> describe todos;
++-------------+------------+------+-----+---------+-------+
+| Field       | Type       | Null | Key | Default | Extra |
++-------------+------------+------+-----+---------+-------+
+| description | text       | NO   |     | NULL    |       |
+| completed   | tinyint(1) | NO   |     | NULL    |       |
++-------------+------------+------+-----+---------+-------+
+2 rows in set (0.002 sec)
+
+MariaDB [laracasts_php]> Ctrl-C -- exit!
+Aborted
+jeandev@jeandev-Lenovo-G580:/var/www/laracasts-php$ mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 42
+Server version: 10.3.18-MariaDB-1:10.3.18+maria~bionic mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> describe todos;
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> show tables;
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> describe todos;Ctrl-C -- exit!
+Aborted
+jeandev@jeandev-Lenovo-G580:/var/www/laracasts-php$ mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 43
+Server version: 10.3.18-MariaDB-1:10.3.18+maria~bionic mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| laracasts_php      |
+| mysql              |
+| performance_schema |
++--------------------+
+4 rows in set (0.001 sec)
+
+MariaDB [(none)]> use laracasts_php;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [laracasts_php]> create table todos (id integer PRIMARY KEY AUTO_INCREMENT, description text NOT NULL, completed boolean NOT NULL);
+ERROR 1050 (42S01): Table 'todos' already exists
+MariaDB [laracasts_php]> drop table todos;
+Query OK, 0 rows affected (0.012 sec)
+
+MariaDB [laracasts_php]> clear
+MariaDB [laracasts_php]> create table todos (id integer PRIMARY KEY AUTO_INCREMENT, description text NOT NULL, completed boolean NOT NULL);
+Query OK, 0 rows affected (0.079 sec)
+
+MariaDB [laracasts_php]> show tables;
++-------------------------+
+| Tables_in_laracasts_php |
++-------------------------+
+| todos                   |
++-------------------------+
+1 row in set (0.001 sec)
+
+MariaDB [laracasts_php]> describe todos;
++-------------+------------+------+-----+---------+----------------+
+| Field       | Type       | Null | Key | Default | Extra          |
++-------------+------------+------+-----+---------+----------------+
+| id          | int(11)    | NO   | PRI | NULL    | auto_increment |
+| description | text       | NO   |     | NULL    |                |
+| completed   | tinyint(1) | NO   |     | NULL    |                |
++-------------+------------+------+-----+---------+----------------+
+3 rows in set (0.002 sec)
+
+MariaDB [laracasts_php]> show tables;
++-------------------------+
+| Tables_in_laracasts_php |
++-------------------------+
+| todos                   |
++-------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [laracasts_php]> insert into todos (description, completed) values ('Go to the store', false);
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [laracasts_php]> select * from todos;
++----+-----------------+-----------+
+| id | description     | completed |
++----+-----------------+-----------+
+|  1 | Go to the store |         0 |
++----+-----------------+-----------+
+1 row in set (0.001 sec)
+
+MariaDB [laracasts_php]> insert into todos (description, completed) values ('Finish up screencast', false);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [laracasts_php]> select * from todos;
++----+----------------------+-----------+
+| id | description          | completed |
++----+----------------------+-----------+
+|  1 | Go to the store      |         0 |
+|  2 | Finish up screencast |         0 |
++----+----------------------+-----------+
+2 rows in set (0.000 sec)
+
+MariaDB [laracasts_php]> update todos SET completed = 1 where id = 1;
+Query OK, 1 row affected (0.010 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [laracasts_php]> select * from todos;
++----+----------------------+-----------+
+| id | description          | completed |
++----+----------------------+-----------+
+|  1 | Go to the store      |         1 |
+|  2 | Finish up screencast |         0 |
++----+----------------------+-----------+
+2 rows in set (0.001 sec)
+
+MariaDB [laracasts_php]> select * from todos where id = 1;
++----+-----------------+-----------+
+| id | description     | completed |
++----+-----------------+-----------+
+|  1 | Go to the store |         1 |
++----+-----------------+-----------+
+1 row in set (0.002 sec)
+
+MariaDB [laracasts_php]> insert into todos (description, completed) values ('Clean House', false);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [laracasts_php]> select * from todos;
++----+----------------------+-----------+
+| id | description          | completed |
++----+----------------------+-----------+
+|  1 | Go to the store      |         1 |
+|  2 | Finish up screencast |         0 |
+|  3 | Clean House          |         0 |
++----+----------------------+-----------+
+3 rows in set (0.000 sec)
+
+MariaDB [laracasts_php]> insert into todos (description, completed) values ('Contribute to open source project', false);
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [laracasts_php]> select * from todos;
++----+-----------------------------------+-----------+
+| id | description                       | completed |
++----+-----------------------------------+-----------+
+|  1 | Go to the store                   |         1 |
+|  2 | Finish up screencast              |         0 |
+|  3 | Clean House                       |         0 |
+|  4 | Contribute to open source project |         0 |
++----+-----------------------------------+-----------+
+4 rows in set (0.001 sec)
+
+MariaDB [laracasts_php]> update todos SET completed = 1 where id = 4
+    -> ;
+Query OK, 1 row affected (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [laracasts_php]> select * from todos;
++----+-----------------------------------+-----------+
+| id | description                       | completed |
++----+-----------------------------------+-----------+
+|  1 | Go to the store                   |         1 |
+|  2 | Finish up screencast              |         0 |
+|  3 | Clean House                       |         0 |
+|  4 | Contribute to open source project |         1 |
++----+-----------------------------------+-----------+
+4 rows in set (0.001 sec)
+
+MariaDB [laracasts_php]>
