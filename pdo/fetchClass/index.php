@@ -1,8 +1,5 @@
 <?php
 
-define('PROJECT', __DIR__);
-define('DS', DIRECTORY_SEPARATOR);
-
 require 'functions.php';
 require './src/Entity/Task.php';
 
