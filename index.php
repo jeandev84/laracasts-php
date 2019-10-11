@@ -1,19 +1,25 @@
 <?php
 
-define('PROJECT', __DIR__);
-define('DS', DIRECTORY_SEPARATOR);
 
-require 'functions.php';
-require './src/Entity/Task.php';
+$query = require 'bootstrap.php';
+
+// require './app/Entity/Task.php';
+
+$tasks = $query->selectAll('todos');
+
+/*
+$query = require 'bootstrap.php';
+require './app/Entity/Task.php';
+$tasks = $query->selectAll('todos', App\Entity\Task::class);
+==================================================================
+$tasks = array_map(function ($task) {
+    $t = new \App\Entity\Task();
+    $t->description = $task['description'];
+}, $tasks);
+*/
 
 
-// Get PDO
-$pdo = connectToDb();
-
-
-// fetch all tasks
-$tasks = fetchAllTasks($pdo); # debug($tasks);
-
+debug($tasks);
 
 // Load view
 require 'index.view.php';

@@ -13,7 +13,7 @@ $name = $_GET['name'] ?? null;
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" href="/assets/css/app.css">
+    <link rel="stylesheet" href="/public/assets/css/app.css">
 </head>
 <body>
 <header>

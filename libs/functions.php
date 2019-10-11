@@ -1,6 +1,5 @@
 <?php
 
-# DEBUG
 
 /**
  * @param $data
@@ -23,38 +22,6 @@ function debug($arr, $die = false)
     print_r($arr);
     echo '</pre>';
     if($die) die;
-}
-
-
-# DATABASE
-
-/**
- * @return PDO
- */
-function connectToDb()
-{
-    // Connection to Database
-    try {
-
-        return new PDO('mysql:host=127.0.0.1;dbname=laracasts_php', 'root', '');
-
-    } catch (PDOException $e) {
-
-        die($e->getMessage());
-    }
-}
-
-
-/**
- * @param PDO $pdo
- * @return array
- */
-function fetchAllTasks(PDO $pdo)
-{
-    // Execute Query
-    $statement = $pdo->prepare('select * from `todos`');
-    $statement->execute();
-    return $statement->fetchAll(PDO::FETCH_CLASS, 'Task');
 }
 
 
