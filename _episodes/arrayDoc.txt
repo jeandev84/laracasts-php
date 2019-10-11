@@ -1,0 +1,5 @@
+/**
+ * arrayFilter : Filter down the collection
+ * arrayMap    : Transform an object to somewhere
+ * arrayColumn : Pull the value from each item from collection
+ */

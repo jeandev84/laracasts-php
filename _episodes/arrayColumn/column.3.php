@@ -1,23 +1,8 @@
 <?php
 
+
 require '../libs/functions.php';
 
-/*
-use Framework\Http\Request;
-use Framework\Routing\Router;
-
-$database = require '../src/bootstrap.php';
-
-require Router::load('../routes.php')->direct(Request::uri());
-
-*/
-
-
-/**
- * arrayFilter : Filter down the collection
- * arrayMap    : Transform an object to somewhere
- * arrayColumn : Pull the value from each item from collection
- */
 
 class Post
 {
@@ -49,10 +34,10 @@ class Post
 
 
 $posts = [
-  new Post('My First Post', 'JW', true),
-  new Post('My Second Post', 'JW', true),
-  new Post('My Third Post', 'AM', true),
-  new Post('My Fourth Post', 'TR', false)
+    new Post('My First Post', 'JW', true),
+    new Post('My Second Post', 'JW', true),
+    new Post('My Third Post', 'AM', true),
+    new Post('My Fourth Post', 'TR', false)
 ];
 
 
@@ -77,4 +62,3 @@ debug($titles);
 /* Collection by key 'author' from posts collection  */
 $authors = array_column($posts, 'author');
 debug($authors);
-
