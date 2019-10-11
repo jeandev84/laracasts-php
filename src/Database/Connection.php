@@ -16,12 +16,17 @@ class Connection
      * Make connection to database via PDO
      * @return PDO
      */
-    public static function make()
+    public static function make(array $config)
     {
        // Connection to Database
        try {
 
-           return new PDO('mysql:host=127.0.0.1;dbname=laracasts_php', 'root', '');
+           return new PDO(
+               sprintf('%s;dbname=%s', $config['connection'], $config['name']),
+               $config['username'],
+               $config['password'],
+               $config['options']
+           );
 
        } catch (PDOException $e) {
 
@@ -30,4 +35,4 @@ class Connection
     }
 }
 
-$pdo = Connection::make();
+/* $pdo = Connection::make(); */
