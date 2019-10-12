@@ -1,4 +1,8 @@
 <?php
 
-debug($_POST);
-debug($_SERVER, true);
+$app['database']->insert('users', [
+    'name' => $_POST['name']
+]);
+
+header('Location : /');
+exit;

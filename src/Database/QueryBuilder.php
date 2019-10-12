@@ -40,4 +40,54 @@ class QueryBuilder
          }
          return $statement->fetchAll(PDO::FETCH_CLASS);
      }
+
+     /**
+      * @param $table
+      * @param array $parameters
+     */
+     public function insert($table, array $parameters)
+     {
+         $sql = sprintf(
+             'INSERT INTO %s (%s) VALUES (%s)',
+             $table,
+             implode(', ', array_keys($parameters)),
+             ':'. implode(', :', array_keys($parameters))
+         );
+
+        try {
+
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute($parameters);
+
+        } catch (\Exception $e) {
+
+            die('Whoops, something went wrong.');
+        }
+     }
 }
+
+/*
+
+array_map(function ($param) {
+             return ":{$param}";
+}, array_keys($parameters));
+
+public function insert( string $table, array $parameters )
+{
+        $columnNames = join( ', ', array_keys( $parameters ) );
+        $placeholder = ':' . join( ', :', array_keys( $parameters ) );
+
+        $sql = sprintf(
+            'insert into %s (%s) values (%s)',
+            $table, $columnNames, $placeholder
+        );
+
+        try {
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute($parameters);
+        } catch (Exception $e) {
+            die( $e->getMessage() );
+        }
+        header("Location: /");
+    }
+ */
