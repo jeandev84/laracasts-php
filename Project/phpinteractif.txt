@@ -1,0 +1,7 @@
+jeandev@jeandev-Lenovo-G580:/var/www/laracasts-php$ php --interactive
+Interactive mode enabled
+
+php >
+
+====================================
+$ php -v
