@@ -1,0 +1,5 @@
+# Install globally laravel
+$ composer global require "laravel/installer"
+
+# Terminal (vi or subl)
+$ vi ~/.bashrc
